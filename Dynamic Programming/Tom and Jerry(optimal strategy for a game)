@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+void tj(int n){
+    if(n%2==0){
+        cout<<"1"<<"\n";
+    }else{
+        cout<<"0"<<"\n";
+    }
+}
+
+int main() {
+	//code
+	int t; cin>>t;
+	while(t--){
+	    int n; cin>>n;
+	    tj(n);
+	}
+	return 0;
+}

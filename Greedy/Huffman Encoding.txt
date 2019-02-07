@@ -1,0 +1,66 @@
+using namespace std;
+struct minheap
+{
+  char data;int freq;
+  struct minheap *left,*right;
+  minheap(char data,int freq)
+  {
+      this->data=data;
+      this->freq=freq;
+      left=right=NULL;
+  }
+};
+struct comp
+{
+  bool operator()(minheap* l,minheap *r)
+  {
+      return (l->freq > r->freq);
+  }
+};
+void printcode(minheap *root,string s1)
+{
+    if(root)
+    {
+        if(root->data!='#')
+        cout<<s1<<" ";
+        printcode(root->left,s1+'0');
+        printcode(root->right,s1+'1');
+    }
+}
+ void huffman_code(string s,int a[],int n)
+{
+    struct minheap *left,*right,*top;
+    priority_queue<minheap*,vector<minheap*>,comp> q;
+    for(int i=0;i<n;i++)
+    q.push(new minheap(s[i],a[i]));
+    while(q.size()!=1)
+    {
+        left=q.top();
+        q.pop();
+        right=q.top();
+        q.pop();
+        top=new minheap('#',left->freq+right->freq);
+        top->left=left;
+        top->right=right;
+        q.push(top);
+    }
+    string s1;
+    printcode(q.top(),s1);
+    
+}
+int main()
+ {
+	int t;cin>>t;
+	while(t--)
+	{
+	    string s;
+	    cin>>s;
+	    int n=s.length();
+	    int a[n];
+	    for(int i=0;i<n;i++)
+	    cin>>a[i];
+	    huffman_code(s,a,n);
+	    cout<<endl;
+	}
+	return 0;
+}

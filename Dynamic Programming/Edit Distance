@@ -1,0 +1,47 @@
+                                                                   EDIT DISTANCE
+
+TRICK : 1.) Make a table and if both the charactes of both strings are same then use the diagnol value
+        2.) if the characters are different then take 1+min value of its adjacent values.
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int min(int a, int b, int c){
+    return min(min(a,b), c);
+}
+
+int edit(string str1, string str2){
+    int m=str1.length();
+    int n=str2.length();
+    int D[m+1][n+1];
+    for(int i=0; i<=m; i++){
+        for(int j=0; j<=n; j++){
+            if(i==0){
+                D[i][j]=j;
+            }else if(j==0){
+                D[i][j]=i;
+            }else if(str1[i-1]==str2[j-1]){
+                D[i][j]= D[i-1][j-1];
+            }else{
+                D[i][j] = 1+min(D[i-1][j], D[i][j-1], D[i-1][j-1]);
+            }
+        }
+    }
+    return D[m][n];
+}
+
+int main() {
+	//code
+	int t; cin>>t;
+	while(t--){
+	    int a; int b; cin>>a>>b;
+	    string str1;
+	    string str2;
+	    cin>>str1>>str2;
+	    cout<<edit(str1, str2)<<"\n";
+	}
+	return 0;
+}
