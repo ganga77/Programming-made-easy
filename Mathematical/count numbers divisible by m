@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int t; cin>>t;
+	while(t--){
+	    int a; cin>>a;
+	    int b; cin>>b;
+	    int m; cin>>m;
+	    if(a<=m){
+	        a=m;
+	    }
+	    int x=a/m;
+	    int y=b/m;
+	    int c=0;
+	    
+	    for(int i=x; i<=y; i++){
+	        int ans=i*m;
+	        if(ans>=a){
+	            c++;
+	        }
+	        
+	    }
+	    cout<<c<<"\n";
+	}
+	return 0;
+}

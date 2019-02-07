@@ -1,0 +1,15 @@
+
+
+void printDuplicates(int arr[], int n)
+{
+    int i,flag=0;
+    for(i=0;i<n;i++) {
+            arr[arr[i]%n]+=n;
+            if(arr[arr[i]%n]/n==2) {
+                cout<<arr[i]%n<<" ";
+                flag=1;
+            }
+    }
+    if(!flag)
+        cout<<-1;
+}

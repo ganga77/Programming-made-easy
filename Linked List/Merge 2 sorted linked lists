@@ -1,0 +1,18 @@
+Node* SortedMerge(Node* head1,   Node* head2)
+{
+    // Your Code Here
+    Node *res=NULL;
+    if(head1==NULL){
+        return head2;
+    }else if(head2==NULL){
+        return head1;
+    }
+    if(head1->data <= head2->data){
+        res=head1;
+        res->next=SortedMerge(head1->next, head2);
+    }else{
+        res=head2;
+        res->next=SortedMerge(head1, head2->next);
+    }
+    return res;
+}

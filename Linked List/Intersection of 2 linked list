@@ -1,0 +1,31 @@
+struct node* findIntersection(struct node* head1, struct node* head2)
+{
+    // code here
+    map<int,int> m1,m2;
+    vector<int> v;
+    while(head1!=NULL)
+    {
+        m1[head1->data]++;
+        head1=head1->next;
+    }
+    while(head2!=NULL)
+    {
+        m2[head2->data]++;
+        if(m1.find(head2->data)!=m1.end())
+        {
+            if(m2[head2->data]<=m1[head2->data])
+            {
+                v.push_back(head2->data);
+            }
+        }
+        head2=head2->next;
+    }
+  
+    sort(v.begin(),v.end(),greater<int>());
+    struct node * t=NULL;
+    int i;
+    for(i=0;i<v.size();i++)
+        push(&t,v[i]);
+    return t;
+}
+

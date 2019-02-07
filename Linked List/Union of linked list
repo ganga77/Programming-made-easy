@@ -1,0 +1,58 @@
+struct node* makeUnion(struct node* head1, struct node* head2)
+{
+    // code here
+    node *p=head1;
+    node *q=head2;
+    vector<int> v;
+    unordered_set<int> s;
+    int c1=1;
+    int c2=1;
+    while(p!=NULL){
+        p=p->next;
+        //c1=1;
+        c1++;
+    }
+     while(q!=NULL){
+        q=q->next;
+        //c2=1;
+        c2++;
+    }
+    
+    if(c1>c2){
+        while(head1!=NULL){
+            v.push_back(head1->data);
+            s.insert(head1->data);
+            head1=head1->next;
+        }
+        while(head2!=NULL){
+            if(s.find(head2->data)==s.end()){
+                v.push_back(head2->data);
+            }
+            head2=head2->next;
+        }
+        
+    }else if(c1<c2){
+                while(head2!=NULL){
+            v.push_back(head2->data);
+            s.insert(head2->data);
+            head2=head2->next;
+        }
+        while(head1!=NULL){
+            if(s.find(head1->data)==s.end()){
+                v.push_back(head1->data);
+            }
+            head1=head1->next;
+        }
+    }else{
+        while(head1!=NULL){
+            v.push_back(head1->data);
+            head1=head1->next;
+        }
+    }
+    sort(v.begin(), v.end(), greater<int>());
+    node *head3=NULL;
+    for(int i=0; i<v.size(); i++){
+        push(&head3, v[i]);
+    }
+    return head3;
+}

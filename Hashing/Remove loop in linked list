@@ -1,0 +1,16 @@
+void removeTheLoop(Node *node)
+{
+     //Your code here
+     unordered_map<Node *, int> mp;
+     Node *last=NULL;
+     while(node!=NULL){
+         if(mp.find(node)==mp.end()){
+             mp[node]++;
+             last=node;
+             node=node->next;
+         }else{
+             last->next=NULL;
+             break;
+         }
+     }
+}

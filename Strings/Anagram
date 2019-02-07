@@ -1,0 +1,35 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+bool anagram(string expr, string expr1){
+    int n1=expr.length();
+    int n2=expr1.length();
+    
+    if(n1!=n2)
+        return false;
+    
+    sort(expr.begin(), expr.end());
+    sort(expr1.begin(), expr1.end());
+    
+    for(int i=0; i<n1; i++)
+        if(expr[i]!=expr1[i])
+            return false;
+    
+    return true;        
+}
+
+int main() {
+	//code
+	int t; cin>>t;
+	while(t--){
+	    string expr;
+	    string expr1;
+	    cin>>expr>>expr1;
+	    if(anagram(expr, expr1))
+	        cout<<"YES"<<"\n";
+	   else
+	        cout<<"NO"<<"\n";
+	}
+	return 0;
+}

@@ -1,0 +1,55 @@
+using namespace std;
+
+int main() {
+	//code
+
+	int t;
+	cin >> t;
+
+	while(t--){
+		int n;
+		cin >> n;
+
+		int ar[n], dep[n];
+
+		for(int i = 0; i < n ;i ++){
+			cin >> ar[i];
+		}
+
+		for(int i = 0; i < n ;i ++){
+			cin >> dep[i];
+		}
+
+
+		multimap<int, char>  tt;
+		for(int i = 0; i < n ;i ++){
+			//cout << ar[i] << " " << dep[i] << endl;
+			tt.insert(make_pair(ar[i] , 'a'));
+			tt.insert(make_pair(dep[i] , 'd'));
+		}
+
+		multimap<int, char>::iterator it = tt.begin();
+
+		int res = 0;
+		int temp = 0;
+		for(; it != tt.end(); it++){
+
+
+			if((*it).second == 'a'){
+				res++;
+			}else{
+				res--;
+			}
+
+			if(temp < res){
+				temp = res;
+			}
+			//cout << (*it).first << endl;
+		}
+		
+		cout << temp << endl;
+
+	}
+
+	return 0;
+}

@@ -1,0 +1,34 @@
+int detectloop(Node *list)
+{
+   // your code here
+   if(list==NULL){
+       return 0;
+   }
+   Node *p=list;
+   Node *q=list;
+   while(p && q && q->next){
+       p=p->next;
+       q=q->next->next;
+       if(p==q){
+           return p->data;
+       }
+   }
+   return 0;
+}
+
+void removeTheLoop(Node *node)
+{
+     //Your code here
+     unordered_map<Node *, int> mp;
+     Node *last=NULL;
+     while(node!=NULL){
+         if(mp.find(node)==mp.end()){
+             mp[node]++;
+             last=node;
+             node=node->next;
+         }else{
+             last->next=NULL;
+             break;
+         }
+     }
+}

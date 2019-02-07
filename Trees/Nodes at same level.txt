@@ -1,0 +1,29 @@
+Node *getNExtRight(Node * p){
+    Node *temp = p->nextRight;
+    while(temp != NULL){
+        if(temp->left != NULL){
+            return temp->left;
+        }
+        if(temp->right != NULL){
+            return temp->right;
+        }
+        
+        temp = temp->nextRight;
+    }
+}
+
+void connect(Node *p)
+{
+   // Your Code Here
+   Node *temp;
+   if(!p){
+       return;
+   }
+   p->nextRight= NULL;
+   while(p!=NULL){
+       Node *q=p;
+       while(q!=NULL){
+           
+       }
+   }
+}

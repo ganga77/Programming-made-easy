@@ -1,0 +1,27 @@
+using namespace std;
+
+int main() 
+{
+	int t;
+	cin>>t;
+	cin.ignore();
+	while(t--)
+	{
+	    string s;
+	    getline(cin,s);
+	    map<char,int>mp;
+	    string ans="";
+	    for(int i=0;i<s.length();i++)
+	    {
+	        if(mp[s[i]]==0)
+	        {
+	            ans=ans+s[i];
+	            mp[s[i]]++;
+	        }
+	            
+	        else
+	            continue;
+	    }
+	    cout<<ans<<endl;
+	}
+	return 0;

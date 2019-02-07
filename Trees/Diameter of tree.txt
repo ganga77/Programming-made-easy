@@ -1,0 +1,31 @@
+int max(int a, int b){
+    return a>b? a:b;
+}
+int height(Node *node){
+    if(node==NULL){
+        return 0;
+    }
+    int lDepth=height(node->left);
+    int rDepth=height(node->right);
+    if(lDepth > rDepth){
+        return lDepth+1;
+    }
+    else{
+        return rDepth+1;
+    }
+}
+int diameter(Node* node)
+{
+   // Your code here
+   if(node==NULL){
+       return 0;
+   }
+   
+   int lH = height(node->left);
+   int rH = height(node->right);
+   
+   int lD=diameter(node->left);
+   int rD=diameter(node->right);
+   
+   return max(lH+rH+1, max(lD, rD));
+}

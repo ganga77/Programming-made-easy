@@ -1,0 +1,32 @@
+void levelOrder(Node* node)
+{
+  //Your code here
+  if(node==NULL){
+      return;
+  }
+  queue<Node *> q;
+  Node *curr;
+  q.push(node);
+  q.push(NULL);
+  
+  while(q.size()>1){
+      curr = q.front();
+      q.pop();
+      if(curr==NULL){
+          q.push(NULL);
+          cout<<"$"<<" ";
+      }else{
+          if(curr->left ){
+              q.push(curr->left);
+          }
+          if(curr->right ){
+              q.push(curr->right);
+          }
+          
+          cout<<curr->data<<" ";
+      }
+  if(q.size()==1){
+      cout<<"$"; 
+      }
+}
+}
